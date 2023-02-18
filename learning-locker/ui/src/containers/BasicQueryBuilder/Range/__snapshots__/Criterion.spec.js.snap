@@ -1,0 +1,225 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BasicQueryBuilder -> Range Criterion render 1`] = `
+.c2 {
+  position: relative;
+  cursor: pointer;
+}
+
+.c2:focus {
+  outline: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c5 {
+  margin-left: 2px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 10px;
+}
+
+.c6 {
+  min-height: 30px;
+  width: 100%;
+}
+
+.c0 {
+  margin-bottom: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1 {
+  padding-top: 2px;
+  width: 15%;
+  margin-right: 2%;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  min-height: 30px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      tabIndex={0}
+    >
+      <div
+        className="c3 btn btn-default btn-xs"
+      >
+        <div
+          className="c4"
+        >
+          &gt;
+        </div>
+        <div
+          className="c5"
+        >
+          <div
+            className="ion-arrow-up-b"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c6"
+  >
+    <input
+      max={1}
+      min="0"
+      onChange={[Function]}
+      step={0.1}
+      type="number"
+      value=""
+    />
+  </div>
+</div>
+`;
+
+exports[`BasicQueryBuilder -> Range Criterion with value 1`] = `
+.c2 {
+  position: relative;
+  cursor: pointer;
+}
+
+.c2:focus {
+  outline: 0;
+}
+
+.c3 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c4 {
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+}
+
+.c5 {
+  margin-left: 2px;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  width: 10px;
+}
+
+.c6 {
+  min-height: 30px;
+  width: 100%;
+}
+
+.c0 {
+  margin-bottom: 4px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+}
+
+.c1 {
+  padding-top: 2px;
+  width: 15%;
+  margin-right: 2%;
+  -webkit-box-pack: start;
+  -webkit-justify-content: flex-start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  min-height: 30px;
+}
+
+<div
+  className="c0"
+>
+  <div
+    className="c1"
+  >
+    <div
+      className="c2"
+      onBlur={[Function]}
+      onFocus={[Function]}
+      tabIndex={0}
+    >
+      <div
+        className="c3 btn btn-default btn-xs"
+      >
+        <div
+          className="c4"
+        >
+          &gt;
+        </div>
+        <div
+          className="c5"
+        >
+          <div
+            className="ion-arrow-up-b"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="c6"
+  >
+    <input
+      max={1}
+      min="0"
+      onChange={[Function]}
+      step={0.1}
+      type="number"
+      value=""
+    />
+  </div>
+</div>
+`;

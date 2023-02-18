@@ -1,0 +1,61 @@
+{
+  "apps": [
+    {
+      "name": "API",
+      "script": "api/dist/server",
+      "cwd": ".",
+      "output": "./logs/stdout.log",
+      "error": "./logs/stderr.log",
+      "pid": "./pids/api.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "detached": true,
+      "watch": ["api/dist", ".env"],
+      "ignore_watch": [".map", "node_modules"],
+      "watch_options": {
+        "usePolling": true
+      }
+    },
+    {
+      "name": "UIServer",
+      "script": "ui/dist/server",
+      "cwd": ".",
+      "output": "./logs/stdout.log",
+      "error": "./logs/stderr.log",
+      "pid": "./pids/ui.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "detached": true,
+      "wait_ready": true,
+      "listen_timeout": 30000
+    },
+    {
+      "name": "Worker",
+      "script": "worker/dist/server",
+      "cwd": ".",
+      "node_args": "--max-old-space-size=256 --max-semi-space-size=2",
+      "output": "./logs/stdout.log",
+      "error": "./logs/stderr.log",
+      "pid": "./pids/ui.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "detached": true,
+      "watch": ["worker/dist", ".env"],
+      "wait_ready": true,
+      "listen_timeout": 30000
+    },
+    {
+      "name": "Scheduler",
+      "script": "cli/dist/scheduler",
+      "cwd": ".",
+      "output": "./logs/stdout.log",
+      "error": "./logs/stderr.log",
+      "pid": "./pids/scheduler.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "watch": ["cli/dist", ".env"],
+      "detached": true,
+      "listen_timeout": 30000
+    }
+  ]
+}

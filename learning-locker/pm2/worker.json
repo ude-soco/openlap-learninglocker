@@ -1,0 +1,31 @@
+{
+  "apps": [
+    {
+      "name": "Worker",
+      "script": "worker/dist/server",
+      "cwd": ".",
+      "output": "./logs/worker_stdout.log",
+      "error": "./logs/worker_stderr.log",
+      "pid": "./pids/ui.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "wait_ready": true,
+      "listen_timeout": 30000,
+      "node_args": "--max-old-space-size=256 --max-semi-space-size=2",
+      "watch": [".env"]
+    },
+    {
+      "name": "Scheduler",
+      "script": "cli/dist/scheduler",
+      "cwd": ".",
+      "output": "./logs/scheduler_stdout.log",
+      "error": "./logs/scheduler_stderr.log",
+      "pid": "./pids/scheduler.pid",
+      "instances": 1,
+      "exec_mode": "cluster",
+      "detached": true,
+      "listen_timeout": 30000,
+      "watch": [".env"]
+    }
+   ]
+ }
