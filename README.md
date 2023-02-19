@@ -84,6 +84,16 @@ Please follow the steps below to install a Learning Locker instance in Windows.
   node cli/dist/server createSiteAdmin admin@mail.com soco 1234qweR
   ```
 
+### Accessing the learning locker server
+
+- Go to `http://localhost:3000` to access the learning locker server
+
+- Login using the admin credentials created in the previous step
+
+- Select the organization `soco`. Click on settings and select `Stores` tab. Add a new store and leave the default values
+
+- Click on the `Clients` tab and open the `New xAPI store client` panel. Use the Basic Auth credentials to access the xapi service (required to communicate with the xapi service from any other application)
+
 ### PM2 commands
 
 - Check the status
@@ -100,5 +110,5 @@ Please follow the steps below to install a Learning Locker instance in Windows.
 
 - Stop the PM2 server
   ```
-  pm2 kill all
+  pm2 kill
   ```
