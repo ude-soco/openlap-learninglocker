@@ -36,34 +36,42 @@ Please follow the steps below to install a Learning Locker instance in Windows.
   npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\MSBuild\15.0\Bin\MSBuild.exe"
   ```
 
-- Go to `learning-locker` folder and install the requirements
+- Go to `learning-locker` folder 
 
-  ```
-  yarn install --ignore-engines
-  ```
+  - Make a copy of `example.env` file and rename it to `.env`
 
-- Build all the services in learning locker
+  - Install the yarn packages
 
-  ```
-  yarn build-all
-  ```
+    ```
+    yarn install --ignore-engines
+    ```
 
-- Run the required migrations
+  - Build all the services in learning locker
 
-  ```
-  yarn migrate
-  ```
+    ```
+    yarn build-all
+    ```
 
-- Go to `xapi-service` folder and install the requirements
+  - Run the required migrations
 
-  ```
-  yarn install --ignore-engines
-  ```
+    ```
+    yarn migrate
+    ```
 
-- Build all the services in xapi service
-  ```
-  yarn build
-  ```
+- Go to `xapi-service` folder 
+
+  - Make a copy of `example.env` file and rename it to `.env`
+
+  - Install the yarn packages
+
+    ```
+    yarn install --ignore-engines
+    ```
+
+  - Build all the services in xapi service
+    ```
+    yarn build
+    ```
 
 ### Running the server
 
