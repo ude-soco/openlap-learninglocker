@@ -57,6 +57,10 @@ Please follow the steps below to install a Learning Locker instance in Windows.
     ```
     yarn migrate
     ```
+  - Create an site admin
+    ```
+    node cli/dist/server createSiteAdmin admin@mail.com soco 1234qweR
+    ```
 
 - Go to `xapi-service` folder 
 
@@ -85,11 +89,6 @@ Please follow the steps below to install a Learning Locker instance in Windows.
 
   ```
   pm2 start pm2/xapi.json
-  ```
-
-- Go to `learning-locker` folder and create an site admin
-  ```
-  node cli/dist/server createSiteAdmin admin@mail.com soco 1234qweR
   ```
 
 ### Accessing the learning locker server
