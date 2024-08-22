@@ -18,7 +18,7 @@ Please follow the steps below to install a Learning Locker instance in Windows.
   pm2 set pm2-logrotate:compress true
   ```
 
-- Install [Visual Studio Community 2017]([https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&rel=15](https://aka.ms/vs/15/release/vs_community.exe)). Make sure to install the package `Desktop development with C++`
+- Install [Visual Studio Community 2017](https://aka.ms/vs/15/release/vs_community.exe). Make sure to install the package `Desktop development with C++`
 
 - Set `VCINSTALLER` system variable to `C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC`. [Read more](https://stackoverflow.com/questions/57541402/node-gyp-configure-got-gyp-err-find-vs/70799513#70799513)
 
