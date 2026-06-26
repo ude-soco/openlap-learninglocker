@@ -1,34 +1,16 @@
-import Storage from '@google-cloud/storage';
-import defaultTo from 'lodash/defaultTo';
-import { join } from 'path';
-import { createPathUploader } from './pkgcloud';
+// NOTE: `@google-cloud/storage` was removed from this build because it pulls in
+// a native `grpc` addon that no longer ships prebuilt binaries and no longer
+// compiles on a modern toolchain. Google Cloud Storage is therefore disabled;
+// use FS_REPO=local (default) or FS_REPO=azure. The functions below preserve
+// the module's export shape (so the storage factory still resolves) and only
+// throw if Google storage is actually selected and used.
+const disabled = () => {
+  throw new Error(
+    'Google Cloud Storage (FS_REPO=google) is disabled in this build. ' +
+    'Use FS_REPO=local (default) or FS_REPO=azure.'
+  );
+};
 
-const keyFilename = process.env.FS_GOOGLE_CLOUD_KEY_FILENAME;
-const projectId = process.env.FS_GOOGLE_CLOUD_PROJECT_ID;
-const bucketName = process.env.FS_GOOGLE_CLOUD_BUCKET;
-const subfolder = defaultTo(process.env.FS_SUBFOLDER, 'storage');
-
-const storage = new Storage({ projectId, keyFilename });
-
-
-const getPrefixedPath = path => join(subfolder, path);
-
-export const uploadFromStream = toPath => fromStream => new Promise((resolve, reject) => {
-  const fullPath = getPrefixedPath(toPath);
-  const file = storage.bucket(bucketName).file(fullPath);
-  const writeStream = file.createWriteStream();
-  writeStream.on('error', reject);
-  writeStream.on('finish', resolve);
-  fromStream.pipe(writeStream);
-});
-
-export const uploadFromPath = createPathUploader(uploadFromStream);
-
-export const downloadToStream = fromPath => toStream =>
-  new Promise((resolve, reject) => {
-    const file = storage.bucket(bucketName).file(getPrefixedPath(fromPath));
-    const readStream = file.createReadStream();
-    toStream.on('error', reject);
-    toStream.on('success', resolve);
-    readStream.pipe(toStream);
-  });
+export const uploadFromStream = () => () => disabled();
+export const uploadFromPath = () => () => disabled();
+export const downloadToStream = () => () => disabled();

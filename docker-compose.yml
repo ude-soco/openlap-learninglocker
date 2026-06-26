@@ -1,0 +1,90 @@
+# Full Learning Locker + xAPI service stack.
+#
+#   docker compose up -d --build      # build & start everything
+#   docker compose logs -f learning-locker
+#   docker compose down               # stop (keeps data volumes)
+#
+# Service URLs on the host:
+#   UI   -> http://localhost:3000
+#   API  -> http://localhost:8080
+#   xAPI -> http://localhost:8081
+#   Mongo-> mongodb://localhost:27018   (published on 27018, NOT the default 27017)
+
+services:
+  mongo:
+    container_name: ll_mongo
+    image: mongo:4.0
+    restart: unless-stopped
+    ports:
+      - "27018:27017"
+    volumes:
+      - mongo-config:/data/configdb:rw
+      - mongo-data:/data/db:rw
+    healthcheck:
+      test: ["CMD", "mongo", "--quiet", "--eval", "db.adminCommand('ping').ok"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    container_name: ll_redis
+    image: redis:4.0
+    restart: unless-stopped
+    command: redis-server --appendonly yes
+    volumes:
+      - redis-data:/data:rw
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  learning-locker:
+    container_name: ll_app
+    build:
+      context: ./learning-locker
+    restart: unless-stopped
+    env_file:
+      - ./learning-locker/.env
+    environment:
+      # Site admin seeded on first boot (see learning-locker/docker-entrypoint.sh).
+      # Change these to manage the bootstrap admin credentials.
+      SEED_ADMIN_EMAIL: learninglocker@uni-due.de
+      SEED_ADMIN_ORG: UDE
+      SEED_ADMIN_PASS: password123
+    ports:
+      - "3000:3000"   # UI
+      - "8080:8080"   # API
+    volumes:
+      - ll-storage:/app/storage
+      - ll-seed-state:/app/.seed-state
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  xapi-service:
+    container_name: ll_xapi
+    build:
+      context: ./xapi-service
+    restart: unless-stopped
+    env_file:
+      - ./xapi-service/.env
+    ports:
+      - "8081:8081"   # xAPI endpoint
+    volumes:
+      - xapi-storage:/usr/src/app/storage
+    depends_on:
+      mongo:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+volumes:
+  mongo-config: {}
+  mongo-data: {}
+  redis-data: {}
+  ll-storage: {}
+  ll-seed-state: {}
+  xapi-storage: {}
